@@ -10,8 +10,9 @@ const { title, quote, media = '', mediaType = 'image' } = Astro.props;
 
 <section class="hero">
     <div class="hero-content">
-            <h1>{title}</h1>
-            <br>
+        <img id="hero-image" src="./TU_Banner.png" alt="Trisophic Union Banner" />
+        <h1>{title}</h1>
+        <br style="z-index: 99;">
         <slot></slot>
     </div>
 </section>
@@ -25,8 +26,15 @@ const { title, quote, media = '', mediaType = 'image' } = Astro.props;
     text-align: center;
     height: 100vh;
 
-    background-color: #002368;
     color:white;
+
+}
+#hero-image{
+    position: absolute;
+    left:0;
+    top:0;
+    z-index: -1;
+    width: 100vw;
 }
 h1{
     font-family: 'Courier New', Courier, monospace;

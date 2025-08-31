@@ -24,9 +24,9 @@ build:
 pages:
   stage: deploy
   script:
-    - mv dist public
+    - mv dist publishing
   artifacts:
     paths:
-      - public
+      - publishing
   only:
     - main
