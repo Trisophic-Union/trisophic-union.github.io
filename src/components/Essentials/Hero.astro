@@ -8,42 +8,87 @@ interface Props {
 const { title, quote, media = '', mediaType = 'image' } = Astro.props;
 ---
 
-<section class="hero">
-    <div class="hero-content">
-        <img id="hero-image" src="./TU_Banner.png" alt="Trisophic Union Banner" />
+<section id="hero">
+    <nav>
+        <h2>About</h2>
+        <a>Ideology</a>
+        <a>Structure</a>
+        <a>socials</a>
+    </nav>
+    <div id="hero-content">
         <h1>{title}</h1>
         <br style="z-index: 99;">
         <slot></slot>
     </div>
+    <nav>
+        <h2>Projects</h2>
+        <a>Project Algocracy</a>
+        <a>Project "Alexandria's Sapling"</a>
+        <a>Project Cybersyn Revival</a>
+    </nav>
 </section>
 
 <style>
-.hero{
-    display: flex;
+#hero{
+    display: grid;
+    grid-auto-flow: column;
     align-items: center;
     justify-content: center;
     width:100vw;
     text-align: center;
     height: 100vh;
+    max-height: 100vh;
 
     color:white;
 
+    overflow-y:none;
+
+    background: no-repeat center url("./TU_Banner_upscaled.png");
+    background-size: cover;
 }
-#hero-image{
+#hero::after{
+    content: "";
     position: absolute;
-    left:0;
-    top:0;
-    z-index: -1;
-    width: 100vw;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #33366342;
+    z-index: 1;
+}
+#hero-content{
+    flex: 1;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    z-index: 999;
+
+    background-color: rgba(98, 0, 255, 0.342);
+    padding: 20px;
+    border: 2px solid rgba(89, 90, 175, 0.397);
+    border-block: none;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    width: 50vw;
+}
+nav{
+    width: 25vw;
+}
+a{
+    display: block;
 }
 h1{
     font-family: 'Courier New', Courier, monospace;
     font-size: 4rem;
-    animation: wobbleUpnDown 5s infinite ease-in-out ;
-}
-.hero-content {
-  flex: 1;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    text-align: center;
+
+
+    padding: 15px;
+    border-radius: 5px;
+
+    color: rgb(255, 255, 255);
 }
 @keyframes wobbleUpnDown {
     0%, 100% {
@@ -53,4 +98,5 @@ h1{
         transform: translateY(-20px);
     
 }
+
 </style>
