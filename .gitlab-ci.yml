@@ -23,6 +23,8 @@ build:
 
 pages:
   stage: deploy
+  script:
+    - echo "running!"
   artifacts:
     paths:
       - public
