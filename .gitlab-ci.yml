@@ -1,6 +1,6 @@
 # .gitlab-ci.yml for deploying Astro site to GitLab Pages
 
-image: node:20
+image: node:21
 
 stages:
   - build
