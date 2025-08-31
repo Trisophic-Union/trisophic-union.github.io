@@ -1,0 +1,48 @@
+---
+interface Props {
+    title: string;
+    quote?: string;
+    media?: string;
+    mediaType?: 'image' | 'video';
+}
+const { title, quote, media = '', mediaType = 'image' } = Astro.props;
+---
+
+<section class="hero">
+    <div class="hero-content">
+            <h1>{title}</h1>
+            <br>
+        <slot></slot>
+    </div>
+</section>
+
+<style>
+.hero{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100vw;
+    text-align: center;
+    height: 100vh;
+
+    background-color: #002368;
+    color:white;
+}
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 4rem;
+    animation: wobbleUpnDown 5s infinite ease-in-out ;
+}
+.hero-content {
+  flex: 1;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+@keyframes wobbleUpnDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    
+}
+</style>

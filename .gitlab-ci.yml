@@ -1,0 +1,32 @@
+# .gitlab-ci.yml for deploying Astro site to GitLab Pages
+
+image: node:20
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm ci
+
+build:
+  stage: build
+  script:
+    - npx astro build
+  artifacts:
+    paths:
+      - dist
+
+pages:
+  stage: deploy
+  script:
+    - mv dist public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
