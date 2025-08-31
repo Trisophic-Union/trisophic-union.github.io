@@ -2,4 +2,8 @@
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-export default defineConfig({});
+export default defineConfig({
+    // its just the way gitlab works.
+    outDir: 'public',
+    publicDir: 'static',
+});
