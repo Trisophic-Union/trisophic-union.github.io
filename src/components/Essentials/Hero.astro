@@ -1,50 +1,49 @@
 ---
+import "tailwindcss"
 interface Props {
     title: string;
-    quote?: string;
-    media?: string;
-    mediaType?: 'image' | 'video';
+    image?: string;
 }
-const { title, quote, media = '', mediaType = 'image' } = Astro.props;
+const { title, image = ""} = Astro.props;
+
+const imageUrl = `"${image}"`
 ---
 
-<section id="hero">
-    <nav>
-        <h2>About</h2>
-        <a>Ideology</a>
-        <a>Structure</a>
-        <a>socials</a>
-    </nav>
+<section id="hero" style=`background: no-repeat center url(${imageUrl}); background-size: cover;`>
     <div id="hero-content">
-        <h1>{title}</h1>
-        <br style="z-index: 99;">
-        <slot></slot>
+        <nav style="justify-items:right;">
+            <h2 style="animation: upndownless 5s ease-in-out infinite;">Info</h2>
+            <a style="max-width: 90%;" class="rightSlide">Ideology</a>
+            <a style="max-width: 60%; animation-delay: 250ms;" class="rightSlide">Governing Structure</a>
+        </nav>
+        <div>
+            <h1 style="animation: upndownless 10s ease-in-out infinite; animation-delay: 200ms;">{title}</h1>
+            <hr style="animation: upndownless 10s ease-in-out infinite; animation-delay: 300ms;">
+            <slot></slot>
+        </div>
+        <nav style="justify-items:left;">
+            <h2 style="animation: upndownless 5s ease-in-out infinite; animation-delay: 100ms;">Major Projects</h2>
+            <a style="max-width: 90%; animation-delay: 500ms;" class="leftSlide">Alexandria's Sapling - Learning Library</a>
+            <a style="max-width: 60%; animation-delay: 750ms;" class="leftSlide">Project Algocracy - Programable Laws</a>
+        </nav>
     </div>
-    <nav>
-        <h2>Projects</h2>
-        <a>Project Algocracy</a>
-        <a>Project "Alexandria's Sapling"</a>
-        <a>Project Cybersyn Revival</a>
-    </nav>
 </section>
 
-<style>
+<style lang="less">
 #hero{
     display: grid;
-    grid-auto-flow: column;
     align-items: center;
     justify-content: center;
+
     width:100vw;
-    text-align: center;
     height: 100vh;
     max-height: 100vh;
 
+    text-align: center;
+
     color:white;
 
-    overflow-y:none;
-
-    background: no-repeat center url("./TU_Banner_upscaled.png");
-    background-size: cover;
+    overflow:hidden;
 }
 #hero::after{
     content: "";
@@ -53,50 +52,92 @@ const { title, quote, media = '', mediaType = 'image' } = Astro.props;
     left: 0;
     width: 100%;
     height: 100%;
-    background: #33366342;
+    background: #002368c4;
     z-index: 1;
 }
 #hero-content{
     flex: 1;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     z-index: 999;
-
-    background-color: rgba(98, 0, 255, 0.342);
-    padding: 20px;
-    border: 2px solid rgba(89, 90, 175, 0.397);
-    border-block: none;
 
     display: grid;
     align-items: center;
-    justify-content: center;
+    justify-items: center;
 
-    width: 50vw;
+    grid-auto-flow: column;
+
+    width: 100vw;
 }
+.rightSlide::after{
+    right:0;
+}
+.leftSlide::after{
+    left:0;
+}
+@keyframes upndown {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(-20px);}
+    100% {transform: translateY(0px);}
+}
+@keyframes upndownless {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(-7px);}
+    100% {transform: translateY(0px);}
+}
+
 nav{
-    width: 25vw;
+    display: grid;
+    width: calc(25vw - 20px);
+    padding-inline: 15px;
+    h2{
+        margin-block:25px;
+        font-size: 2rem;
+        text-decoration: underline;
+        width: 100%;
+        align-items: center;
+    }
+    a{
+        position: relative;
+        width: 80%;
+        background: #00013fbe;
+        margin:10px;
+        padding:15px;
+
+        font-size: 1.1rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        animation: upndown 3s ease-in-out infinite;
+        color:white;
+        transition: 100ms;
+        &::after{
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 100%;
+            top:0;
+            transition: 100ms;
+
+            z-index: -1;
+        }
+        &:hover::after{
+            background: rgb(186, 188, 255);
+            width: 100%;
+        }
+        &:hover{
+            color:black;
+        }
+    }
 }
-a{
-    display: block;
+div{
+    width: 50vw;
 }
 h1{
     font-family: 'Courier New', Courier, monospace;
     font-size: 4rem;
 
     text-align: center;
-
-
-    padding: 15px;
-    border-radius: 5px;
+    margin:0;
 
     color: rgb(255, 255, 255);
-}
-@keyframes wobbleUpnDown {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    
 }
 
 </style>

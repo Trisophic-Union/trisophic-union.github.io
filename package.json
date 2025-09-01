@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "trisophic-union-website",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.13.4"
+    "@tailwindcss/vite": "^4.1.12",
+    "astro": "^5.13.4",
+    "less": "^4.4.1",
+    "tailwindcss": "^4.1.12"
   }
 }
