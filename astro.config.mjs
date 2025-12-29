@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   // its just the way gitlab works.
-  outDir: 'public',
+  outDir: 'dist',
 
   publicDir: 'static',
 
