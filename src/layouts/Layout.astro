@@ -7,12 +7,15 @@ interface Props {
 const { title } = Astro.props;
 ---
 
+<!-- Default layout for all web pages -->
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- Monad is temporary placeholder -->
+		<link rel="icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/commons/d/d0/TechnocracyMonad.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Trisophic Union | {title}</title>
 	</head>

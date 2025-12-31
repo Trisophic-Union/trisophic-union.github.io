@@ -8,9 +8,117 @@ import Hero from '../components/Essentials/Hero.astro';
 ---
 
 <Layout title='Home'>
-	<Hero title="Trisophic Union" image="./TU_Banner_upscaled.png">
-		<span><span style="color: blue;">Demo</span>cracy | <span style="color: red;">Techno</span>cracy | <span style="color: gold;">Merito</span>cracy</span>
-		<br>---- | <b>Main Menu</b> | ---- <br>Update 1.0.2 - Project Algocracy is working! <br> (Gonna treat this site like updaing a game lol)<br>
-		Discord: <a href="https://discord.gg/ckZFHEMDxh" style="color: aqua;">https://discord.gg/ckZFHEMDxh</a>
-	</Hero>
+	<main>
+		<div>
+			<h1>Trisophic Union</h1>
+			<div>
+				<span style="color: blue;">Demo</span>cracy | 
+				<span style="color: red;">Techno</span>cracy | 
+				<span style="color: gold;">Merito</span>cracy</span>
+			</div>
+
+			<div>
+				<br>---- | <b>Main Menu</b> | ---- <br>
+			</div>
+			
+			<div>
+				Update 0.0.2 - We are back (That was one hell of a ride)
+			</div>
+
+			<!-- Dropdown -->
+			<div id="dropdown-container">
+				<button id="dropdown-button">Notes</button>
+				<div id="dropdown-list">
+					<ul>
+						<li>Reworking website (im in the middle of it)</li>
+						<li>Added notes to each update</li>
+						<li>* Unrelated Note, Happy New Years :D</li>
+					</ul>
+				</div>
+			</div>
+			<style>
+				#dropdown-list{
+					
+					overflow: hidden;
+					transition: 250ms;
+				}
+			</style>
+			<script>
+				let button = document.getElementById("dropdown-button") as HTMLButtonElement;
+				let dropdown = document.getElementById("dropdown-list") as HTMLDivElement;
+				const defHeight = parseInt(dropdown.style.height)
+				dropdown.style.height = "0px"
+
+				let extended = false;
+				button.onclick = ()=>{
+					if(extended){
+						dropdown.style.height = "0"
+					}else{
+						dropdown.style.height = "auto"
+					}
+					extended=!extended
+				}
+			</script>
+		</div>
+	</main>
+	<footer>
+		<h2>Trisophic Union</h2>
+		<hr>
+		<span>
+			<p> Discord: <a href="https://discord.gg/ckZFHEMDxh">https://discord.gg/ckZFHEMDxh</a> </p>
+			<p> Matrix: <a href="https://matrix.to/#/#trisophic-union:matrix.org">https://matrix.to/#/#trisophic-union:matrix.org</a> </p>
+			<p> Email: <a href="Trisophic-Union@protonmail.com">Trisophic-Union@protonmail.com</a></p>
+			<p> Github: <a href="https://github.com/Trisophic-Union">https://github.com/Trisophic-Union</a> </p>
+			<p> Instagram: <a href="https://www.instagram.com/trisophic_union/">https://www.instagram.com/trisophic_union/</a></p>
+			<p> Mastodon: <a href="https://mastodon.social/@trisophic_union">https://mastodon.social/@trisophic_union</a> </p>
+			<p> Youtube: <a href="https://www.youtube.com/@Trisophicunion">https://www.youtube.com/@Trisophicunion</a> </p>
+		</span>
+	</footer>
 </Layout>
+
+<style>
+	body{
+		background-color: #002368;
+
+		color:white;
+	}
+</style>
+<style>
+	main{
+		height: 100vh;
+		display: grid;
+		
+		align-items: center;
+		justify-content: center;
+	}
+</style>
+<style lang="less">
+
+	footer{
+		color:white;
+		background-color: rgb(0, 0, 100);
+		padding:1rem;
+		h2{
+			margin:0px;
+		}
+		span{
+			display: flex;
+			flex-wrap: wrap;
+			
+		}
+		p{
+			display: inline-block;
+			text-wrap: nowrap;
+			padding-inline:1rem;
+
+			margin:0px;
+			a{
+				color:rgb(174, 195, 255);
+			}
+			a:visited{
+				color:rgb(200, 168, 255);
+			}
+		}
+	}
+</style>
+

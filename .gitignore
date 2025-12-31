@@ -6,6 +6,9 @@ dist/
 
 # dependencies
 node_modules/
+node_modules
+.astro
+.gitlab-ci.yml
 
 # logs
 npm-debug.log*

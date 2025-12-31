@@ -8,7 +8,7 @@ export default defineConfig({
   // its just the way gitlab works.
   outDir: 'dist',
 
-  publicDir: 'static',
+  publicDir: 'public',
 
   vite: {
     plugins: [tailwindcss()],
